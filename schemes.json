@@ -1,0 +1,64 @@
+[
+{
+"name":"PM Kisan Samman Nidhi",
+"min_age":18,
+"income_limit":600000,
+"gender":"all",
+"category":"farmer",
+"description":"₹6000 yearly financial support for farmers."
+},
+
+{
+"name":"PM Scholarship Scheme",
+"min_age":17,
+"income_limit":800000,
+"gender":"all",
+"category":"student",
+"description":"Financial scholarship for higher education students."
+},
+
+{
+"name":"Sukanya Samriddhi Yojana",
+"min_age":0,
+"income_limit":800000,
+"gender":"female",
+"category":"woman",
+"description":"Savings scheme for girl child welfare."
+},
+
+{
+"name":"Senior Citizen Pension Scheme",
+"min_age":60,
+"income_limit":400000,
+"gender":"all",
+"category":"senior",
+"description":"Monthly pension support for senior citizens."
+},
+
+{
+"name":"PM Rozgar Yojana",
+"min_age":18,
+"income_limit":500000,
+"gender":"all",
+"category":"unemployed",
+"description":"Loan support for starting small businesses."
+},
+
+{
+"name":"PM Awas Yojana",
+"min_age":18,
+"income_limit":300000,
+"gender":"all",
+"category":"poor",
+"description":"Financial help for building houses."
+},
+
+{
+"name":"Ayushman Bharat",
+"min_age":0,
+"income_limit":500000,
+"gender":"all",
+"category":"all",
+"description":"Free health insurance upto ₹5 lakh per family."
+}
+]
