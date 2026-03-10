@@ -1,47 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Government Scheme Finder</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Government Scheme Finder</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background-color: #f5f5f5; }
+header { text-align: center; padding: 20px 0; background-color: #309f68; color: white; width: 100%; font-size: 2em; font-weight: bold; }
+.container { max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+#voiceSection button, #detailsSection button { padding: 10px 15px; margin: 5px; border:none; background:#309f68; color:white; border-radius:5px; cursor:pointer; }
+#voiceSection button:hover, #detailsSection button:hover { background:#309f68; }
+input, select { width: calc(50% - 12px); margin:5px; padding:8px; border-radius:5px; border:1px solid #ccc; }
+.scheme { border:1px solid #ccc; padding:10px; margin:10px 0; border-radius:5px; background:#e8eaf6; }
+</style>
 </head>
 <body onload="applyLanguage()">
 
+<header id="title">Government Scheme Finder</header>
+
 <div class="container">
 
-    <!-- Voice Assistant at top -->
-    <div class="voice-assistant">
-        <h3>Voice Assistant</h3>
-        <button onclick="startVoice()">Start Voice</button>
-        <p id="voiceText"></p>
-    </div>
+  <!-- Voice Assistant Section -->
+  <div id="voiceSection" style="text-align:center; margin-bottom:20px;">
+      <button id="voiceBtn" onclick="startVoice()">Voice Assistant</button>
+      <p id="voiceText"></p>
+  </div>
 
-    <!-- User Details Form -->
-    <div class="user-details">
-        <input type="number" id="age" placeholder="Age">
-        <select id="gender">
-            <option value="all">Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
-        <input type="number" id="income" placeholder="Income">
-        <select id="category">
-            <option value="all">Category</option>
-            <option value="student">Student</option>
-            <option value="farmer">Farmer</option>
-            <option value="senior">Senior Citizen</option>
-            <option value="women">Women</option>
-            <option value="orphan">Orphan</option>
-            <option value="pwd">PWD</option>
-        </select>
-    </div>
+  <!-- Manual Details Section -->
+  <div id="detailsSection" style="text-align:center;">
+      <input type="number" id="age" placeholder="Enter Age">
+      <select id="gender">
+        <option value="" disabled selected>Gender</option>
+        <option value="all">All</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <select id="caste">
+        <option value="" disabled selected>Caste</option>
+        <option value="general">General</option>
+        <option value="obc">OBC</option>
+        <option value="sc">SC</option>
+        <option value="st">ST</option>
+      </select>
+      <input type="text" id="location" placeholder="Enter Location">
+      <input type="number" id="income" placeholder="Enter Income">
+      <select id="category">
+        <option value="" disabled selected>Category</option>
+        <option value="student">Student</option>
+        <option value="farmer">Farmer</option>
+        <option value="senior">Senior Citizen</option>
+        <option value="women">Women</option>
+        <option value="orphan">Orphan</option>
+        <option value="pwd">PWD</option>
+      </select>
+      <br>
+      <button onclick="findSchemes()">Find Schemes</button>
+  </div>
 
-    <!-- Find Schemes Button at bottom -->
-    <div class="find-schemes">
-        <button onclick="findSchemes()">Find Schemes</button>
-    </div>
-
-    <!-- Results -->
-    <div id="results"></div>
+  <!-- Results Section -->
+  <div id="results"></div>
 
 </div>
 
