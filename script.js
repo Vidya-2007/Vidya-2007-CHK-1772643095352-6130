@@ -1,59 +1,115 @@
-// LANGUAGE SELECTION
+// ==========================
+// GLOBAL VOICES
+// ==========================
 
-function setLanguage(lang){
+let voices = [];
 
-localStorage.setItem("language", lang)
+window.speechSynthesis.onvoiceschanged = function(){
+voices = speechSynthesis.getVoices();
+};
 
-window.location.href="login.html"
+
+// ==========================
+// SPEAK TEXT FUNCTION
+// ==========================
+
+function speakText(text){
+
+if(!text) return;
+
+let msg = new SpeechSynthesisUtterance(text);
+
+msg.lang = "en-IN";
+msg.rate = 1;
+msg.pitch = 1;
+
+if(voices.length > 0){
+msg.voice = voices.find(v => v.lang.includes("en")) || voices[0];
+}
+
+speechSynthesis.cancel();
+speechSynthesis.speak(msg);
 
 }
 
 
 
-// REGISTER SYSTEM
+// ==========================
+// REGISTER USER
+// ==========================
 
-let generatedOTP=""
+function registerUser(){
 
-function sendOTP(){
+let phone = document.getElementById("phone").value;
 
-let mobile=document.getElementById("mobile").value
-
-if(mobile.length!==10){
-alert("Enter valid mobile number")
-return
+if(phone == ""){
+alert("Enter phone number");
+return;
 }
 
-generatedOTP=Math.floor(1000+Math.random()*9000)
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
-alert("Demo OTP: "+generatedOTP)
+if(users.includes(phone)){
+alert("User already registered");
+return;
+}
+
+users.push(phone);
+
+localStorage.setItem("users", JSON.stringify(users));
+
+alert("Registration successful");
+
+window.location.href = "login.html";
 
 }
 
 
 
-function register(){
+// ==========================
+// LOGIN USER
+// ==========================
 
-let mobile=document.getElementById("mobile").value
-let otp=document.getElementById("otp").value
-let password=document.getElementById("password").value
+function loginUser(){
 
-let message=document.getElementById("registerMessage")
+let phone = document.getElementById("phone").value;
 
-if(otp==generatedOTP){
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
-localStorage.setItem("userMobile",mobile)
-localStorage.setItem("userPassword",password)
+if(users.includes(phone)){
 
-message.innerHTML="Registration successful"
+alert("Login successful");
 
-setTimeout(()=>{
-window.location.href="login.html"
-},1000)
+window.location.href = "index.html";
+
+}
+else{
+
+alert("User not registered");
+
+}
+
+}
+
+
+
+// ==========================
+// ADMIN LOGIN
+// ==========================
+
+function adminLogin(){
+
+let username = document.getElementById("adminUser").value;
+let password = document.getElementById("adminPass").value;
+
+if(username === "admin" && password === "admin123"){
+
+window.location.href = "admin.html";
 
 }
 else{
 
-message.innerHTML="Invalid OTP"
+alert("Invalid admin login");
 
 }
 
@@ -61,139 +117,144 @@ message.innerHTML="Invalid OTP"
 
 
 
-// LOGIN SYSTEM
-
-function login(){
-
-let mobile=document.getElementById("loginMobile").value
-let password=document.getElementById("loginPassword").value
-
-let savedMobile=localStorage.getItem("userMobile")
-let savedPassword=localStorage.getItem("userPassword")
-
-let message=document.getElementById("loginMessage")
-
-if(mobile===savedMobile && password===savedPassword){
-
-window.location.href="index.html"
-
-}
-else{
-
-message.innerHTML="Invalid login"
-
-}
-
-}
-
-
-
-// AADHAAR VERIFICATION
-
-function verifyAadhaar(){
-
-let aadhaar=document.getElementById("aadhaar").value
-let status=document.getElementById("aadhaarStatus")
-
-if(aadhaar.length===12){
-status.innerHTML="Aadhaar Verified (Demo)"
-}
-else{
-status.innerHTML="Invalid Aadhaar Number"
-}
-
-}
-
-
-
-// BANK VERIFICATION
-
-function verifyBank(){
-
-let acc=document.getElementById("bank").value
-let ifsc=document.getElementById("ifsc").value
-let status=document.getElementById("bankStatus")
-
-if(acc.length>8 && ifsc.length===11){
-status.innerHTML="Bank Account Verified (Demo)"
-}
-else{
-status.innerHTML="Invalid Bank Details"
-}
-
-}
-
-
-
-// SCHEME FINDER
+// ==========================
+// FIND SCHEMES
+// ==========================
 
 async function findSchemes(){
 
-let age=document.getElementById("age").value
-let gender=document.getElementById("gender").value
-let income=document.getElementById("income").value
-let category=document.getElementById("category").value
+let age = document.getElementById("age").value;
+let gender = document.getElementById("gender").value;
+let income = document.getElementById("income").value;
+let category = document.getElementById("category").value;
 
-let results=document.getElementById("results")
+let response = await fetch("schemes.json");
+let schemes = await response.json();
 
-// CATEGORY VALIDATION
+let result = "";
+let schemeNames = [];
 
-if(category==="senior" && age<60){
-results.innerHTML="Error: Senior citizen schemes require age 60 or above."
-return
-}
-
-if(category==="student" && age<5){
-results.innerHTML="Error: Invalid age for student category."
-return
-}
-
-if(category==="farmer" && age<18){
-results.innerHTML="Error: Farmer schemes require age 18 or above."
-return
-}
-
-results.innerHTML="Loading..."
-
-try{
-
-let response=await fetch("schemes.json")
-let schemes=await response.json()
-
-let output=""
-
-schemes.forEach(scheme=>{
+schemes.forEach(scheme => {
 
 if(
-age>=scheme.min_age &&
-income<=scheme.income_limit &&
-(scheme.gender==="all" || scheme.gender===gender) &&
-(scheme.category==="all" || scheme.category===category)
+(age == "" || age >= scheme.min_age) &&
+(income == "" || scheme.income_limit == 0 || income <= scheme.income_limit) &&
+(gender == "all" || scheme.gender == "all" || scheme.gender == gender) &&
+(category == "all" || scheme.category == "all" || scheme.category == category)
 ){
 
-output+=`
+result += `
 <div class="scheme">
 <h3>${scheme.name}</h3>
 <p>${scheme.description}</p>
+<p><b>Last Date:</b> ${scheme.lastDate}</p>
 </div>
-`
+`;
+
+schemeNames.push(scheme.name);
 
 }
 
-})
+});
 
-if(output===""){
-results.innerHTML="No eligible schemes found."
+if(result === ""){
+result = "<p>No schemes found</p>";
+}
+
+document.getElementById("results").innerHTML = result;
+
+
+// ==========================
+// VOICE OUTPUT
+// ==========================
+
+let message = "";
+
+if(schemeNames.length > 0){
+message = "Available schemes are " + schemeNames.join(", ");
 }
 else{
-results.innerHTML=output
+message = "Sorry, no schemes found.";
 }
 
-}
-catch(error){
-
-results.innerHTML="Error loading data"
+speakText(message);
 
 }
+
+
+
+// ==========================
+// VOICE ASSISTANT
+// ==========================
+
+function startVoice(){
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if(!SpeechRecognition){
+alert("Voice recognition not supported. Please use Google Chrome.");
+return;
+}
+
+const recognition = new SpeechRecognition();
+
+recognition.lang = "en-IN";
+
+recognition.start();
+
+recognition.onstart = function(){
+
+document.getElementById("voiceText").innerText = "Listening...";
+
+};
+
+
+recognition.onresult = function(event){
+
+let speech = event.results[0][0].transcript.toLowerCase();
+
+document.getElementById("voiceText").innerText = "You said: " + speech;
+
+
+// detect keywords
+
+if(speech.includes("student")){
+document.getElementById("category").value = "student";
+}
+
+if(speech.includes("farmer")){
+document.getElementById("category").value = "farmer";
+}
+
+if(speech.includes("senior")){
+document.getElementById("category").value = "senior";
+}
+
+if(speech.includes("women")){
+document.getElementById("category").value = "women";
+}
+
+if(speech.includes("orphan")){
+document.getElementById("category").value = "orphan";
+}
+
+if(speech.includes("pwd")){
+document.getElementById("category").value = "pwd";
+}
+
+if(speech.includes("female") || speech.includes("woman")){
+document.getElementById("gender").value = "female";
+}
+
+if(speech.includes("male")){
+document.getElementById("gender").value = "male";
+}
+
+
+// search schemes
+
+findSchemes();
+
+};
 
 }

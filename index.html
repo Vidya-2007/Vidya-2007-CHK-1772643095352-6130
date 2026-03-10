@@ -1,66 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Government Scheme Finder</title>
+<title>Government Scheme Finder</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="applyLanguage()">
 
-<header>
-AI Government Scheme Finder
-</header>
+<header id="title">Government Scheme Finder</header>
 
 <div class="container">
 
-<h2>Citizen Verification</h2>
-
-<label>Aadhaar Number</label>
-<input type="text" id="aadhaar" placeholder="Enter 12 digit Aadhaar">
-
-<button onclick="verifyAadhaar()">Verify Aadhaar</button>
-
-<p id="aadhaarStatus"></p>
-
-
-<label>Bank Account Number</label>
-<input type="text" id="bank" placeholder="Enter account number">
-
-<label>IFSC Code</label>
-<input type="text" id="ifsc" placeholder="Enter IFSC code">
-
-<button onclick="verifyBank()">Verify Bank</button>
-
-<p id="bankStatus"></p>
-
-
-<h2>Check Eligible Government Schemes</h2>
-
-<label>Age</label>
+<label id="ageLabel">Age</label>
 <input type="number" id="age">
 
-<label>Gender</label>
+<label id="genderLabel">Gender</label>
 <select id="gender">
 <option value="all">All</option>
 <option value="male">Male</option>
 <option value="female">Female</option>
+<option value="other">Other</option>
 </select>
 
-<label>Income</label>
+<label id="incomeLabel">Income</label>
 <input type="number" id="income">
 
-<label>Category</label>
+<label id="categoryLabel">Category</label>
 <select id="category">
 <option value="all">All</option>
-<option value="farmer">Farmer</option>
 <option value="student">Student</option>
-<option value="woman">Woman</option>
+<option value="farmer">Farmer</option>
 <option value="senior">Senior Citizen</option>
-<option value="unemployed">Unemployed</option>
-<option value="poor">BPL</option>
+<option value="women">Women</option>
+<option value="orphan">Orphan</option>
+<option value="pwd">PWD</option>
 </select>
 
-<button onclick="findSchemes()">Find Schemes</button>
+<button id="findBtn" onclick="findSchemes()">Find Schemes</button>
+
+<button id="voiceBtn" onclick="startVoice()">Voice Assistant</button>
+
+<p id="voiceText"></p>
 
 <div id="results"></div>
 

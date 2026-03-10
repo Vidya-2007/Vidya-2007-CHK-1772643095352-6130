@@ -7,17 +7,35 @@
 
 <body>
 
+<header>Select Language</header>
+
 <div class="container">
 
-<h2>Select Language / भाषा निवडा / भाषा चुनें</h2>
+<h2>Choose Language</h2>
 
-<button onclick="setLanguage('english')">English</button>
-<button onclick="setLanguage('marathi')">मराठी</button>
-<button onclick="setLanguage('hindi')">हिंदी</button>
+<select id="language">
+<option value="en">English</option>
+<option value="hi">Hindi</option>
+<option value="mr">Marathi</option>
+</select>
+
+<button onclick="setLanguage()">Continue</button>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+
+function setLanguage(){
+
+let lang = document.getElementById("language").value;
+
+localStorage.setItem("language", lang);
+
+window.location.href = "login.html";
+
+}
+
+</script>
 
 </body>
 </html>

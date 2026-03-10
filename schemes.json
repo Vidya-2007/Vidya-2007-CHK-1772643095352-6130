@@ -1,64 +1,202 @@
 [
-{
-"name":"PM Kisan Samman Nidhi",
-"min_age":18,
-"income_limit":600000,
-"gender":"all",
-"category":"farmer",
-"description":"₹6000 yearly financial support for farmers."
-},
-
-{
-"name":"PM Scholarship Scheme",
-"min_age":17,
-"income_limit":800000,
-"gender":"all",
-"category":"student",
-"description":"Financial scholarship for higher education students."
-},
-
-{
-"name":"Sukanya Samriddhi Yojana",
-"min_age":0,
-"income_limit":800000,
-"gender":"female",
-"category":"woman",
-"description":"Savings scheme for girl child welfare."
-},
-
-{
-"name":"Senior Citizen Pension Scheme",
-"min_age":60,
-"income_limit":400000,
-"gender":"all",
-"category":"senior",
-"description":"Monthly pension support for senior citizens."
-},
-
-{
-"name":"PM Rozgar Yojana",
-"min_age":18,
-"income_limit":500000,
-"gender":"all",
-"category":"unemployed",
-"description":"Loan support for starting small businesses."
-},
-
-{
-"name":"PM Awas Yojana",
-"min_age":18,
-"income_limit":300000,
-"gender":"all",
-"category":"poor",
-"description":"Financial help for building houses."
-},
-
-{
-"name":"Ayushman Bharat",
-"min_age":0,
-"income_limit":500000,
-"gender":"all",
-"category":"all",
-"description":"Free health insurance upto ₹5 lakh per family."
-}
+  {
+    "name": "Women Entrepreneurship Scheme",
+    "description": "Financial support for women entrepreneurs.",
+    "min_age": 18,
+    "income_limit": 50000,
+    "gender": "female",
+    "category": "all",
+    "state": "all",
+    "lastDate": "2026-04-30"
+  },
+  {
+    "name": "Senior Citizen Pension",
+    "description": "Pension for citizens above 60 years.",
+    "min_age": 60,
+    "income_limit": 100000,
+    "gender": "all",
+    "category": "senior",
+    "state": "all",
+    "lastDate": "2026-05-15"
+  },
+  {
+    "name": "Student Scholarship",
+    "description": "Scholarships for students in school or college.",
+    "min_age": 5,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "student",
+    "state": "all",
+    "lastDate": "2026-06-01"
+  },
+  {
+    "name": "Farmer Crop Insurance",
+    "description": "Insurance support for crop failure.",
+    "min_age": 18,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "farmer",
+    "state": "all",
+    "lastDate": "2026-05-20"
+  },
+  {
+    "name": "PWD Employment Support",
+    "description": "Job opportunities for persons with disabilities.",
+    "min_age": 18,
+    "income_limit": 100000,
+    "gender": "all",
+    "category": "PWD",
+    "state": "all",
+    "lastDate": "2026-05-10"
+  },
+  {
+    "name": "Orphan Education Support",
+    "description": "Education aid for orphan children.",
+    "min_age": 5,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "orphan",
+    "state": "all",
+    "lastDate": "2026-06-05"
+  },
+  {
+    "name": "Rural Health Scheme",
+    "description": "Free medical support in rural areas.",
+    "min_age": 0,
+    "income_limit": 100000,
+    "gender": "all",
+    "category": "all",
+    "state": "all",
+    "lastDate": "2026-04-25"
+  },
+  {
+    "name": "Urban Housing Support",
+    "description": "Housing assistance for urban poor.",
+    "min_age": 18,
+    "income_limit": 50000,
+    "gender": "all",
+    "category": "all",
+    "state": "all",
+    "lastDate": "2026-05-30"
+  },
+  {
+    "name": "Girl Child Education Scheme",
+    "description": "Financial aid for girls’ education.",
+    "min_age": 5,
+    "income_limit": 30000,
+    "gender": "female",
+    "category": "all",
+    "state": "all",
+    "lastDate": "2026-06-15"
+  },
+  {
+    "name": "Senior Health Insurance",
+    "description": "Health coverage for senior citizens.",
+    "min_age": 60,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "senior",
+    "state": "all",
+    "lastDate": "2026-05-25"
+  },
+  {
+    "name": "Student Digital Learning",
+    "description": "Free tablets and internet access for students.",
+    "min_age": 5,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "student",
+    "state": "all",
+    "lastDate": "2026-06-10"
+  },
+  {
+    "name": "Farmer Fertilizer Subsidy",
+    "description": "Subsidies on fertilizers for farmers.",
+    "min_age": 18,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "farmer",
+    "state": "all",
+    "lastDate": "2026-05-18"
+  },
+  {
+    "name": "PWD Education Scholarship",
+    "description": "Scholarships for students with disabilities.",
+    "min_age": 5,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "PWD",
+    "state": "all",
+    "lastDate": "2026-06-12"
+  },
+  {
+    "name": "Orphan Food Security",
+    "description": "Nutritional support for orphan children.",
+    "min_age": 0,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "orphan",
+    "state": "all",
+    "lastDate": "2026-06-20"
+  },
+  {
+    "name": "Women Skill Development",
+    "description": "Training programs for women in trades.",
+    "min_age": 18,
+    "income_limit": 50000,
+    "gender": "female",
+    "category": "all",
+    "state": "all",
+    "lastDate": "2026-05-28"
+  },
+  {
+    "name": "Senior Citizen Housing",
+    "description": "Affordable housing for senior citizens.",
+    "min_age": 60,
+    "income_limit": 50000,
+    "gender": "all",
+    "category": "senior",
+    "state": "all",
+    "lastDate": "2026-06-01"
+  },
+  {
+    "name": "Student Exam Fee Waiver",
+    "description": "Exemption from exam fees for low-income students.",
+    "min_age": 5,
+    "income_limit": 20000,
+    "gender": "all",
+    "category": "student",
+    "state": "all",
+    "lastDate": "2026-06-08"
+  },
+  {
+    "name": "Farmer Market Assistance",
+    "description": "Support for selling crops in local markets.",
+    "min_age": 18,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "farmer",
+    "state": "all",
+    "lastDate": "2026-05-22"
+  },
+  {
+    "name": "PWD Skill Development",
+    "description": "Training for persons with disabilities.",
+    "min_age": 18,
+    "income_limit": 50000,
+    "gender": "all",
+    "category": "PWD",
+    "state": "all",
+    "lastDate": "2026-05-30"
+  },
+  {
+    "name": "Orphan Health Support",
+    "description": "Free healthcare for orphan children.",
+    "min_age": 0,
+    "income_limit": 0,
+    "gender": "all",
+    "category": "orphan",
+    "state": "all",
+    "lastDate": "2026-06-18"
+  }
 ]
