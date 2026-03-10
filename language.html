@@ -11,31 +11,15 @@
 
 <div class="container">
 
-<h2>Choose Language</h2>
+<button onclick="setLanguage('en')">English</button>
 
-<select id="language">
-<option value="en">English</option>
-<option value="hi">Hindi</option>
-<option value="mr">Marathi</option>
-</select>
+<button onclick="setLanguage('hi')">हिंदी</button>
 
-<button onclick="setLanguage()">Continue</button>
+<button onclick="setLanguage('mr')">मराठी</button>
 
 </div>
 
-<script>
-
-function setLanguage(){
-
-let lang = document.getElementById("language").value;
-
-localStorage.setItem("language", lang);
-
-window.location.href = "login.html";
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
