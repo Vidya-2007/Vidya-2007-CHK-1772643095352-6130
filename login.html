@@ -11,16 +11,28 @@
 
 <div class="container">
 
-<h2 id="loginText">Login</h2>
+<h2>User Login</h2>
 
-<input type="text" id="phone" placeholder="Enter Phone Number">
+<input type="text" id="phone" placeholder="Enter Mobile Number">
+
+<input type="password" id="password" placeholder="Enter Password">
 
 <button onclick="loginUser()">Login</button>
 
 <p>
-<span id="noAccount">Don't have account?</span>
-<a href="register.html" id="registerText">Register</a>
+Don't have account?
+<a href="register.html">Register</a>
 </p>
+
+<hr>
+
+<h2>Admin Login</h2>
+
+<input type="text" id="adminUser" placeholder="Admin Username">
+
+<input type="password" id="adminPass" placeholder="Admin Password">
+
+<button onclick="adminLogin()">Admin Login</button>
 
 </div>
 
